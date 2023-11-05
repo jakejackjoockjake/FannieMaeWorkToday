@@ -30,50 +30,63 @@
           <h2>Monthly Car Payment: </h2>
           <h3>
             
-            <input id ="CarPayment" placeholder="USD" />
+            <input type ="number" id ="CarPayment" placeholder="USD" />
           </h3>
 
           <h2>Student Loan Payment: </h2>
           <h3>
-            <input id ="StudentLoan" placeholder="USD" />
+            <input type ="number" id ="StudentLoan" placeholder="USD" min = "0" max = "850" />
           </h3>
 
           <h2>Credit Score:</h2>
           <h3>
-            <input id ="CreditScore" placeholder="0-850" />
+            <input type ="number" id ="CreditScore" placeholder="300-850" min = "300" max = "850" />
           </h3>
 
           <h2>Gross Monthly Income: </h2>
           <h3>
-            <input id ="GrossIncome" placeholder="USD" />
+            <input type = "number" id ="GrossIncome" placeholder="USD" />
           </h3>
         </section>
         <section class="UserInput2">
           <h2>Monthly Credit Card Payment: </h2>
           <h3>
-            <input id ="CreditPayment" placeholder="USD" />
+            <input type = "number" id ="CreditPayment" placeholder="USD" />
           </h3>
 
           <h2>Home Appraisal Value: </h2>
           <h3>
             
-            <input id ="HomeAppraised" placeholder="USD" />
+            <input type = "number" id ="HomeAppraised" placeholder="USD" />
           </h3>
 
           <h2>Down Payment Amount: </h2>
           <h3>
             
-            <input id ="DownPayment" placeholder="USD" />
+            <input type ="number" id ="DownPayment" placeholder="USD" />
           </h3>
 
           <h2>Est. monthly mortgage payment: </h2>
           <h3>
             
-            <input id ="Mortgage" placeholder="USD" />
+            <input type = "number" id ="Mortgage" placeholder="USD" />
           </h3>
           <h3>
-            <input type="button" onClick="getCreditScoreValue();" value="Get Value">
+            <input type="button" onClick="getCreditScoreValue();" value="Check Eligibility">
           </h3>
+        </section>
+        <section class ="output">
+          <h1>Results:</h1>
+          <div class="terms-info">
+            <p>DTI = Debt-to-income ratio (percentage of income going towards monthly debt). <br>FEDTI = Front-end debt income (percentage of income going towards monthly mortage). <br>LTV = Loan-to-value (is the percentage of the house appraisal you need the loan for after the down payment).</p>
+              <a class="info-button" href="https://www.lansingstatejournal.com/story/marketplace/real-estate/2020/08/12/loan-value-debt-income-what-do-these-terms-mean/3358196001/">Click Here For More Information</a>
+          </div>
+
+          <div class="output-row">
+            <textarea class="result-text" id ="box1" readonly/></textarea>
+            <textarea class="result-text" id="box2" readonly/></textarea>
+            <textarea class="result-text" id ="box3" readonly/></textarea>
+  </div>
         </section>
       </div>
     </div>
