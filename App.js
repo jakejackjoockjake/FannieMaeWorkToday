@@ -1,13 +1,14 @@
 function getCreditScoreValue() {
   // Variables obtained from user input
-  var credit;
-  var carPayment;
-  var creditCard;
-  var mortage;
-  var studentLoan;
-  var GI;
-  var appraisal;
-  var down;
+  var credit = 0;
+  var carPayment = 0;
+  var creditCard = 0;
+  var mortage = 0;
+  var studentLoan = 0;
+  var GI = 0;
+  var appraisal = 0;
+  var down = 0;
+  var points = 0;
 
   // Variables calculated by back-end
   var monthlyDebt;
@@ -120,7 +121,7 @@ function getCreditScoreValue() {
       return (
         "Your LTV is " +
         LTV +
-        " which makes you eligible for a loan in this field!"
+        "% which makes you eligible for a loan in this field!"
       );
     }
   }
