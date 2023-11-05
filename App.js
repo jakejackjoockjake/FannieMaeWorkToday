@@ -60,8 +60,12 @@ function getCreditScoreValue() {
   creditReport = creditNeed(credit);
 
   // document.getElementById("GrossIncome").value=monthlyDebt;
-  document.getElementById("output").value=DTIBasedNeed;
+  document.getElementById("box1").value=creditReport;
 
+  document.getElementById("box2").value=LTVReport;
+
+  document.getElementById("box3").value=DTIBasedNeed;
+  
   function calcMonthlyDebt(carPayment, creditCard, mortage, studentLoan) {
     return carPayment + creditCard + mortage + studentLoan; // this currently appends each number together instead of adding
   }
