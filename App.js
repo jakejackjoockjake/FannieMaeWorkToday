@@ -16,6 +16,11 @@ function getCreditScoreValue() {
   var LTV;
   var FEDTI;
   var creditResult;
+
+  // Variables for reporting results
+  var LTVReport;
+  var DTIReport;
+  var creditReport;
   
   credit = document.getElementById("CreditScore").value;
   
@@ -38,15 +43,21 @@ function getCreditScoreValue() {
 
   monthlyDebt = calcMonthlyDebt(carPayment, creditCard, mortage, studentLoan);
 
-  DTI = calcDTI(monthlyDebt, GI);
+  // DTI = calcDTI(monthlyDebt, GI); // this is already called in DTIBasedNeed
 
   PMI = calcPMI(appraisal);
 
   LTV = calcLTV(appraisal, down);
 
-  FEDTI = calcFEDTI(mortage, GI);
+  // FEDTI = calcFEDTI(mortage, GI); // this is already called in DTIBasedNeed
 
   creditResult = testCredit(credit);
+
+  LTVReport = LTVBasedNeed(LTV, appraisal);
+  
+  DTIReport = DTIBasedNeed(monthlyDebt, GI, mortage);
+  
+  creditReport = creditNeed(credit);
 
   // document.getElementById("GrossIncome").value=monthlyDebt;
 
@@ -169,7 +180,7 @@ function getCreditScoreValue() {
 
   // responses on credit score
   function creditNeed(credit) {
-    if (testCredit(credit)) {
+    if (creditResult) {
       return "Your credit makes you eligble for a loan.";
     } else {
       return "Your credit immediately disqualifies you for a loan. ";
