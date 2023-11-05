@@ -112,10 +112,10 @@ function getCreditScoreValue() {
       );
     } else if (LTV >= 80) {
       return (
-        "You would need Private Mortage Insurance to pay for the loan, " +
+        "Your LTV is a little high with a " + LTV + "%. You would need Private Mortage Insurance to pay for the loan, " +
         "which would come out to an additional $" +
         calcPMI(appraisal) +
-        " per year at a 1% rate. Another option is raising the down payment."
+        " per year at a 1% rate. Try to get below 80% by finding a way to give a bigger down payment."
       );
     } else {
       return (
@@ -189,7 +189,8 @@ function getCreditScoreValue() {
     if (creditResult) {
       return "Your credit makes you eligble for a loan.";
     } else {
-      return "Your credit immediately disqualifies you for a loan. ";
+      return "Your credit immediately disqualifies you for a loan. Please pay" +
+      " off some debt and make sure your bills are being paid on time";
     }
   }
 };
