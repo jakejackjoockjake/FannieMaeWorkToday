@@ -36,10 +36,10 @@ function getCreditScoreValue() {
   
   appraisal = document.getElementById("HomeAppraised").value
   
-    down = document.getElementById("DownPayment").value;
+  down = document.getElementById("DownPayment").value;
 
   
-  document.getElementById("GrossIncome").value=credit;
+  // document.getElementById("GrossIncome").value=credit; // use to test that values are being caught and assigned
 
   monthlyDebt = calcMonthlyDebt(carPayment, creditCard, mortage, studentLoan);
 
@@ -60,6 +60,7 @@ function getCreditScoreValue() {
   creditReport = creditNeed(credit);
 
   // document.getElementById("GrossIncome").value=monthlyDebt;
+  document.getElementById("output").value=DTIBasedNeed;
 
   function calcMonthlyDebt(carPayment, creditCard, mortage, studentLoan) {
     return carPayment + creditCard + mortage + studentLoan; // this currently appends each number together instead of adding
