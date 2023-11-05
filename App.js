@@ -64,7 +64,7 @@ function getCreditScoreValue() {
 
   document.getElementById("box2").value=LTVReport;
 
-  document.getElementById("box3").value=DTIBasedNeed;
+  document.getElementById("box3").value=DTIReport;
   
   function calcMonthlyDebt(carPayment, creditCard, mortage, studentLoan) {
     return carPayment + creditCard + mortage + studentLoan; // this currently appends each number together instead of adding
