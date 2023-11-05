@@ -1,14 +1,23 @@
 function getCreditScoreValue() {
-  var creditScore;
+  // Variables obtained from user input
+  var credit;
   var carPayment;
   var creditCard;
-  var mortgage;
+  var mortage;
   var studentLoan;
   var GI;
   var appraisal;
   var down;
+
+  // Variables calculated by back-end
+  var monthlyDebt;
+  var DTI;
+  var PMI;
+  var LTV;
+  var FEDTI;
+  var creditResult;
   
-  creditScore = document.getElementById("CreditScore").value;
+  credit = document.getElementById("CreditScore").value;
   
   carPayment = document.getElementById("CarPayment").value;
   
@@ -25,10 +34,24 @@ function getCreditScoreValue() {
     down = document.getElementById("DownPayment").value;
 
   
-  document.getElementById("GrossIncome").value=creditScore;
+  document.getElementById("GrossIncome").value=credit;
+
+  monthlyDebt = calcMonthlyDebt(carPayment, creditCard, mortage, studentLoan);
+
+  DTI = calcDTI(monthlyDebt, GI);
+
+  PMI = calcPMI(appraisal);
+
+  LTV = calcLTV(appraisal, down);
+
+  FEDTI = calcFEDTI(mortage, GI);
+
+  creditResult = testCredit(credit);
+
+  // document.getElementById("GrossIncome").value=monthlyDebt;
 
   function calcMonthlyDebt(carPayment, creditCard, mortage, studentLoan) {
-    return carPayment + creditCard + mortage + studentLoan;
+    return carPayment + creditCard + mortage + studentLoan; // this currently appends each number together instead of adding
   }
 
   function calcDTI(monthlyDebt, GI) {
@@ -49,7 +72,7 @@ function getCreditScoreValue() {
 
   function testCredit(credit) {
     if (credit < 640) {
-      // code to say git gud? idk yet
+      creditNeed(credit);
     } else if (credit >= 640 && credit < 670) {
       points++;
     } else if (credit >= 670 && credit < 700) {
@@ -146,7 +169,7 @@ function getCreditScoreValue() {
 
   // responses on credit score
   function creditNeed(credit) {
-    if (test(credit)) {
+    if (testCredit(credit)) {
       return "Your credit makes you eligble for a loan.";
     } else {
       return "Your credit immediately disqualifies you for a loan. ";
