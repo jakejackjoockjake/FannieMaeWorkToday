@@ -18,11 +18,11 @@ function getCreditScoreValue() {
   
   studentLoan = document.getElementById("StudentLoan").value;
   
-  GI = document.getElementById("GI").value;
+  GI = document.getElementById("GrossIncome").value;
   
-  appraisal = document.getElementById("appraisal").value
+  appraisal = document.getElementById("HomeAppraised").value
   
-    down = document.getElementById("down").value;
+    down = document.getElementById("DownPayment").value;
 
   
   document.getElementById("GrossIncome").value=creditScore;
