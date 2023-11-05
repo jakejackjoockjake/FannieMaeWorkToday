@@ -11,17 +11,18 @@ function getCreditScoreValue() {
   var points = 0;
 
   // Variables calculated by back-end
-  var monthlyDebt;
-  var DTI;
-  var PMI;
-  var LTV;
-  var FEDTI;
-  var creditResult;
+  var monthlyDebt = 0;
+  var DTI = 0;
+  var PMI = 0;
+  var LTV = 0;
+  var FEDTI = 0;
+  
 
   // Variables for reporting results
   var LTVReport;
   var DTIReport;
   var creditReport;
+  var creditResult;
   
   credit = document.getElementById("CreditScore").value;
   
@@ -29,7 +30,7 @@ function getCreditScoreValue() {
   
   creditCard = document.getElementById("CreditPayment").value;
   
-  mortgage = document.getElementById("Mortgage").value;
+  mortage = document.getElementById("Mortgage").value;
   
   studentLoan = document.getElementById("StudentLoan").value;
   
@@ -68,11 +69,11 @@ function getCreditScoreValue() {
   document.getElementById("box3").value=DTIReport;
   
   function calcMonthlyDebt(carPayment, creditCard, mortage, studentLoan) {
-    return carPayment + creditCard + mortage + studentLoan; // this currently appends each number together instead of adding
+    return (parseInt(carPayment) + parseInt(creditCard) + parseInt(mortage) + parseInt(studentLoan)); // this currently appends each number together instead of adding
   }
 
   function calcDTI(monthlyDebt, GI) {
-    return ((monthlyDebt / GI) * 100).toFixed(2);
+    return ((parseInt(monthlyDebt) / parseInt(GI)) * 100).toFixed(2);
   }
 
   function calcPMI(appraisal) {
@@ -129,7 +130,7 @@ function getCreditScoreValue() {
   // responses on dti and fedti calcs
   function DTIBasedNeed(monthlyDebt, GI, mortage) {
     const DTI = calcDTI(monthlyDebt, GI);
-    const FEDTI = calcFEDTI(mortage, GI);
+    const FEDTI = calcFEDTI(parseInt(mortage), parseInt(GI));
 
     if (DTI > 43) {
       return (
@@ -175,7 +176,7 @@ function getCreditScoreValue() {
       return (
         "Your DTI is good with a " +
         DTI +
-        "%, and your FEDTI is " +
+        "%, and your FEDTI is" +
         " good with a " +
         FEDTI +
         "%. You're doing great in this area!"
